@@ -11,6 +11,8 @@ import UIKit
 class PersonTableViewCell: UITableViewCell {
 
     @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var ageLabel: UILabel!
+    @IBOutlet var jobLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
