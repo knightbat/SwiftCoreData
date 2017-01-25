@@ -9,19 +9,24 @@
 import UIKit
 import CoreData
 
-class DetailsAddViewController: UIViewController {
+class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var scrlContainer: UIScrollView!
+    @IBOutlet var jobTextField: UITextField!
+    @IBOutlet var ageTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        setupKeyboard()
     }
     
     
     @IBAction func saveClicked(_ sender: UIButton) {
         
-        if ((nameTextField.text?.characters.count)!>0) {
+        if ((nameTextField.text?.characters.count)!>0&&(ageTextField.text?.characters.count)!>0&&(jobTextField.text?.characters.count)!>0) {
             
             let appDelegate :AppDelegate = UIApplication.shared.delegate as! AppDelegate
             
@@ -30,8 +35,10 @@ class DetailsAddViewController: UIViewController {
             let personManager = NSEntityDescription.entity(forEntityName: "Person", in: context)
             
             let person = Person (entity: personManager!, insertInto: context)
-            
+            let age :NSDecimalNumber = NSDecimalNumber.init(string: ageTextField.text)
             person.name = nameTextField.text
+            person.age=age;
+            person.job=jobTextField.text
             
             do {
                 try context.save()
@@ -41,7 +48,7 @@ class DetailsAddViewController: UIViewController {
             _ = self.navigationController?.popViewController(animated: true)
         } else {
             
-            let alert : UIAlertController = UIAlertController.init(title: "Error !", message: "Enter a name", preferredStyle: UIAlertControllerStyle.alert)
+            let alert : UIAlertController = UIAlertController.init(title: "Error !", message: "Enter all data", preferredStyle: UIAlertControllerStyle.alert)
             
             let okAction : UIAlertAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: { (data) in
                 print("ok clicked")
@@ -53,6 +60,47 @@ class DetailsAddViewController: UIViewController {
         }
         
     }
+    
+    // MARK: -UItextField Delegates
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrlContainer.contentOffset.y=textField.frame.origin.y-20
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrlContainer.contentOffset.y=0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if (textField.isEqual(nameTextField)) {
+            ageTextField.becomeFirstResponder()
+        } else if (textField.isEqual(ageTextField)) {
+            jobTextField.becomeFirstResponder()
+        } else {
+            self.view.endEditing(true)
+        }
+        
+        return true
+    }
+    
+    func setupKeyboard() {
+        
+        let keyboardToolbar = UIToolbar.init()
+        keyboardToolbar.sizeToFit()
+        
+        let flexBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let doneBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action:#selector(keyboardDoneClicked(sender:)));
+        
+        keyboardToolbar.items=[flexBarButton,doneBarButton]
+        
+        self.ageTextField.inputAccessoryView=keyboardToolbar
+        
+    }
+    func keyboardDoneClicked (sender: UIBarButtonItem) {
+        self.jobTextField.becomeFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
