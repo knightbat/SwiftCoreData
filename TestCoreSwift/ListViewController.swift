@@ -71,12 +71,18 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-    //    if(segue.identifier=="update") {
-       
-     //   let indexPath = personTableView.indexPathForSelectedRow;
+        let vc :DetailsAddViewController = segue.destination as! DetailsAddViewController
+
         
-     //   let vc :DetailsAddViewController = segue.destination as! DetailsAddViewController
-     //   }
+        if(segue.identifier=="update") {
+       
+        let indexPath = personTableView.indexPathForSelectedRow;
+        
+            vc.arrayIndex=(indexPath?.row)!
+        } else {
+            
+            vc.arrayIndex = -1
+        }
   }
     
     

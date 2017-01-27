@@ -16,47 +16,91 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var ageTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     
+    var arrayIndex : NSInteger = NSInteger()
+    var person : Person = Person()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         setupKeyboard()
+        
+        
+        if arrayIndex > -1 {
+            
+            let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context : NSManagedObjectContext = appDel.persistentContainer.viewContext
+            let request : NSFetchRequest <Person>= Person.fetchRequest()
+            
+            do {
+                let result = try context.fetch(request)
+                person  = result[arrayIndex]
+                
+                nameTextField.text = person.name
+                jobTextField.text = person.job
+                ageTextField.text = person.age?.stringValue
+                
+            } catch let error {
+                print(error)
+            }
+            
+        }
+        
+        
+        
     }
     
     
     @IBAction func saveClicked(_ sender: UIButton) {
         
-        if ((nameTextField.text?.characters.count)!>0&&(ageTextField.text?.characters.count)!>0&&(jobTextField.text?.characters.count)!>0) {
+        let appDelegate :AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+
+        if (arrayIndex > -1) {
             
-            let appDelegate :AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            
-            let personManager = NSEntityDescription.entity(forEntityName: "Person", in: context)
-            
-            let person = Person (entity: personManager!, insertInto: context)
             let age :NSDecimalNumber = NSDecimalNumber.init(string: ageTextField.text)
             person.name = nameTextField.text
             person.age=age;
             person.job=jobTextField.text
-            
             do {
                 try context.save()
             } catch let error {
                 print(error)
             }
             _ = self.navigationController?.popViewController(animated: true)
+            
         } else {
             
-            let alert : UIAlertController = UIAlertController.init(title: "Error !", message: "Enter all data", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction : UIAlertAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: { (data) in
-                print("ok clicked")
-            });
-            alert.addAction(okAction)
-            
-            self.present(alert, animated: true, completion: nil)
-            
+            if ((nameTextField.text?.characters.count)!>0&&(ageTextField.text?.characters.count)!>0&&(jobTextField.text?.characters.count)!>0) {
+                
+                
+                let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+                
+                let personManager = NSEntityDescription.entity(forEntityName: "Person", in: context)
+                
+                let person = Person (entity: personManager!, insertInto: context)
+                let age :NSDecimalNumber = NSDecimalNumber.init(string: ageTextField.text)
+                person.name = nameTextField.text
+                person.age=age;
+                person.job=jobTextField.text
+                
+                do {
+                    try context.save()
+                } catch let error {
+                    print(error)
+                }
+                _ = self.navigationController?.popViewController(animated: true)
+            } else {
+                
+                let alert : UIAlertController = UIAlertController.init(title: "Error !", message: "Enter all data", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction : UIAlertAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: { (data) in
+                    print("ok clicked")
+                });
+                alert.addAction(okAction)
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }
         }
         
     }
