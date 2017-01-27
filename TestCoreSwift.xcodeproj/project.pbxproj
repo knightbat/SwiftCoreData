@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F4C7B13C1E388F090001432B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B13B1E388F090001432B /* AppDelegate.swift */; };
-		F4C7B13E1E388F090001432B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B13D1E388F090001432B /* ViewController.swift */; };
 		F4C7B1411E388F090001432B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C7B13F1E388F090001432B /* Main.storyboard */; };
 		F4C7B1441E388F090001432B /* TestCoreSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B1421E388F090001432B /* TestCoreSwift.xcdatamodeld */; };
 		F4C7B1461E388F090001432B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C7B1451E388F090001432B /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		F4C7B1381E388F090001432B /* TestCoreSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCoreSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7B13B1E388F090001432B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4C7B13D1E388F090001432B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4C7B1401E388F090001432B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4C7B1431E388F090001432B /* TestCoreSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestCoreSwift.xcdatamodel; sourceTree = "<group>"; };
 		F4C7B1451E388F090001432B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				F4C7B13B1E388F090001432B /* AppDelegate.swift */,
-				F4C7B13D1E388F090001432B /* ViewController.swift */,
 				F4C7B13F1E388F090001432B /* Main.storyboard */,
 				F4C7B1451E388F090001432B /* Assets.xcassets */,
 				F4C7B1471E388F090001432B /* LaunchScreen.storyboard */,
@@ -149,7 +146,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C7B13E1E388F090001432B /* ViewController.swift in Sources */,
 				F4C7B1441E388F090001432B /* TestCoreSwift.xcdatamodeld in Sources */,
 				F4C7B1551E38A3FD0001432B /* ListViewController.swift in Sources */,
 				F4C7B1571E38A4940001432B /* PersonTableViewCell.swift in Sources */,
@@ -318,6 +314,7 @@
 				F4C7B14F1E388F090001432B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
