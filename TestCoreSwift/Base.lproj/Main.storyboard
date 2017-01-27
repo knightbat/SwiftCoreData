@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="1" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h7q-zW-LcN" id="RV7-xX-ru2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JS-l9-Xp2">
@@ -70,7 +70,6 @@
                                             <outlet property="ageLabel" destination="sz7-9G-jth" id="lzY-vU-Yrb"/>
                                             <outlet property="jobLabel" destination="8Yw-5m-evr" id="PdR-UL-Z3A"/>
                                             <outlet property="nameLabel" destination="1JS-l9-Xp2" id="7U4-vZ-uVJ"/>
-                                            <segue destination="QXQ-gc-0wu" kind="show" identifier="update" id="MzY-vR-qpl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,12 +90,13 @@
                     <navigationItem key="navigationItem" id="0Sm-p2-tBf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZPw-Gi-LsZ">
                             <connections>
-                                <segue destination="QXQ-gc-0wu" kind="show" id="NYH-D1-D3v"/>
+                                <segue destination="QXQ-gc-0wu" kind="show" identifier="insert" id="NYH-D1-D3v"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="personTableView" destination="qsc-4r-GUl" id="3kh-EA-hA8"/>
+                        <segue destination="QXQ-gc-0wu" kind="show" identifier="update" id="dsw-61-oJJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -237,6 +237,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MzY-vR-qpl"/>
+        <segue reference="dsw-61-oJJ"/>
     </inferredMetricsTieBreakers>
 </document>
