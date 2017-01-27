@@ -44,9 +44,6 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        
-        
-        
     }
     
     

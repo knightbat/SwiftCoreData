@@ -62,6 +62,25 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "update", sender: self)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+       
+              let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDel.persistentContainer.viewContext
+                       context.delete(result[indexPath.row] as NSManagedObject)
+            result.remove(at: indexPath.row)
+            do {
+                try context.save()
+            } catch let error {
+                // Handle error stored in *error* here
+                print(error)
+            }
+
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        }
+    }
     /*
      // MARK: - Navigation
      
