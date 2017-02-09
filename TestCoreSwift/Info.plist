@@ -28,6 +28,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    
+    
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -42,5 +44,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_NAME) uses camera</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>$(PRODUCT_NAME) like to access your location</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>$(PRODUCT_NAME) uses photos</string>
+    <key>Privacy - Camera Usage Description </key>
+    <string>$(PRODUCT_NAME) camera use</string>
 </dict>
 </plist>

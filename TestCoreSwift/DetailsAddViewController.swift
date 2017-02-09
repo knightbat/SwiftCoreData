@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailsAddViewController: UIViewController, UITextFieldDelegate {
+class DetailsAddViewController: UIViewController, UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var scrlContainer: UIScrollView!
     @IBOutlet var jobTextField: UITextField!
@@ -19,7 +19,7 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var userIamgeView: UIImageView!
     @IBOutlet var houseNoTextField: UITextField!
     @IBOutlet var cityTextField: UITextField!
-
+    
     var arrayIndex : NSInteger = NSInteger()
     var person : Person = Person()
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         setupKeyboard()
         
+        userIamgeView.layer.cornerRadius = userIamgeView.frame.size.width/2
         
         if arrayIndex > -1 {
             
@@ -44,6 +45,8 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
                 ageTextField.text = person.age?.stringValue
                 cityTextField.text=person.address?.city
                 houseNoTextField.text=person.address?.houseNumber
+                userIamgeView.image=UIImage(data:person.image as! Data,scale:1.0)
+                
             } catch let error {
                 print(error)
             }
@@ -55,13 +58,39 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func imageTapped(_ sender: UIButton) {
         
+        let actionSheet = UIAlertController (title: "Choose Photo", message: "Choose An Option", preferredStyle: UIAlertControllerStyle.actionSheet)
         
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { action in
+            
+            let picker = UIImagePickerController()
+            picker.sourceType=UIImagePickerControllerSourceType.camera
+            picker.allowsEditing=true
+            picker.delegate=self
+            self.present(picker, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Choose From Gallery", style: UIAlertActionStyle.default, handler: { action in
+            
+            let picker = UIImagePickerController()
+            picker.sourceType=UIImagePickerControllerSourceType.photoLibrary
+            picker.allowsEditing=true
+            picker.delegate=self
+            self.present(picker, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { action in
+            
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
+    
     @IBAction func saveClicked(_ sender: UIButton) {
         
         let appDelegate :AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-
+        
         if (arrayIndex > -1) {
             
             let age :NSDecimalNumber = NSDecimalNumber.init(string: ageTextField.text)
@@ -70,10 +99,12 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
             person.job=jobTextField.text
             
             let addressManager = NSEntityDescription.entity(forEntityName: "Address", in: context)
+            let data = UIImagePNGRepresentation(userIamgeView.image!)
             person.address = Address (entity: addressManager!, insertInto: context)
-
+            
             person.address?.houseNumber=houseNoTextField.text
             person.address?.city = cityTextField.text
+            person.image=data as NSData?
             do {
                 try context.save()
             } catch let error {
@@ -90,16 +121,17 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
                 
                 let person = Person (entity: personManager!, insertInto: context)
                 let age :NSDecimalNumber = NSDecimalNumber.init(string: ageTextField.text)
+                let data = UIImagePNGRepresentation(userIamgeView.image!)
                 person.name = nameTextField.text
                 person.age=age;
                 person.job=jobTextField.text
-                
+                person.image=data as NSData?
                 let addressManager = NSEntityDescription.entity(forEntityName: "Address", in: context)
                 
-                 person.address = Address (entity: addressManager!, insertInto: context)
+                person.address = Address (entity: addressManager!, insertInto: context)
                 
                 
-               person.address?.houseNumber=houseNoTextField.text
+                person.address?.houseNumber=houseNoTextField.text
                 person.address?.city = cityTextField.text
                 
                 do {
@@ -123,28 +155,7 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-    // MARK: -UItextField Delegates
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        scrlContainer.contentOffset.y=textField.frame.origin.y-20
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        scrlContainer.contentOffset.y=0
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if (textField.isEqual(nameTextField)) {
-            ageTextField.becomeFirstResponder()
-        } else if (textField.isEqual(ageTextField)) {
-            jobTextField.becomeFirstResponder()
-        } else {
-            self.view.endEditing(true)
-        }
-        
-        return true
-    }
+    // MARK: - Methods
     
     func setupKeyboard() {
         
@@ -163,6 +174,49 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     func keyboardDoneClicked (sender: UIBarButtonItem) {
         self.jobTextField.becomeFirstResponder()
     }
+
+    
+    // MARK: - UIImagePickerViewControllerDelegates
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        let pickedImage : UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        userIamgeView.image=pickedImage
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - UItextField Delegates
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrlContainer.contentOffset.y=textField.frame.origin.y-20
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrlContainer.contentOffset.y=0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if (textField.isEqual(nameTextField)) {
+            ageTextField.becomeFirstResponder()
+        } else if (textField.isEqual(ageTextField)) {
+            jobTextField.becomeFirstResponder()
+        } else if (textField.isEqual(jobTextField)) {
+            cityTextField.becomeFirstResponder()
+        } else if (textField.isEqual(cityTextField)) {
+            houseNoTextField.becomeFirstResponder()
+        } else {
+            self.view.endEditing(true)
+        }
+        
+        return true
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -14,6 +14,7 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet var ageLabel: UILabel!
     @IBOutlet var jobLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
+        @IBOutlet var userImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
