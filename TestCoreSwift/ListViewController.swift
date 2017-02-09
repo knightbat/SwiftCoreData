@@ -28,7 +28,6 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
         
         do {
             result = try context.fetch(request)
-            print(result[0].age!)
             personTableView.reloadData()
             
         } catch let error {
@@ -50,10 +49,11 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : PersonTableViewCell = tableView.dequeueReusableCell(withIdentifier:"cell", for: indexPath) as! PersonTableViewCell
-        
-        cell.nameLabel.text=result[indexPath.row].name
-        cell.ageLabel.text = String(format: "%d", (result[indexPath.row].age?.intValue)!)
-        cell.jobLabel.text=result[indexPath.row].job
+        let person : Person = result[indexPath.row]
+        cell.nameLabel.text = person.name
+        cell.ageLabel.text = String(format: "%d", (person.age?.intValue)!)
+        cell.jobLabel.text = person.job
+        cell.addressLabel.text = "House No: \(person.address?.houseNumber ?? ""), \(person.address?.city ?? "")"
         
         return cell;
         
@@ -65,10 +65,10 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-       
-              let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let appDel : AppDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDel.persistentContainer.viewContext
-                       context.delete(result[indexPath.row] as NSManagedObject)
+            context.delete(result[indexPath.row] as NSManagedObject)
             result.remove(at: indexPath.row)
             do {
                 try context.save()
@@ -76,10 +76,21 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
                 // Handle error stored in *error* here
                 print(error)
             }
-
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-        
+            
         }
+    }
+  
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delButton : UITableViewRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Delete") { (IndexPath) in
+            
+        }
+        delButton.backgroundColor=UIColor.black
+        
+        return [delButton]
     }
     /*
      // MARK: - Navigation
@@ -91,18 +102,18 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
         // Pass the selected object to the new view controller.
         
         let vc :DetailsAddViewController = segue.destination as! DetailsAddViewController
-
+        
         
         if(segue.identifier=="update") {
-       
-        let indexPath = personTableView.indexPathForSelectedRow;
-        
+            
+            let indexPath = personTableView.indexPathForSelectedRow;
+            
             vc.arrayIndex=(indexPath?.row)!
         } else {
             
             vc.arrayIndex = -1
         }
-  }
+    }
     
     
 }

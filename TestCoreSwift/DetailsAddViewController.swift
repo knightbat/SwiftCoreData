@@ -16,6 +16,10 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var ageTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     
+    @IBOutlet var userIamgeView: UIImageView!
+    @IBOutlet var houseNoTextField: UITextField!
+    @IBOutlet var cityTextField: UITextField!
+
     var arrayIndex : NSInteger = NSInteger()
     var person : Person = Person()
     override func viewDidLoad() {
@@ -38,7 +42,8 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
                 nameTextField.text = person.name
                 jobTextField.text = person.job
                 ageTextField.text = person.age?.stringValue
-                
+                cityTextField.text=person.address?.city
+                houseNoTextField.text=person.address?.houseNumber
             } catch let error {
                 print(error)
             }
@@ -46,7 +51,12 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - Button Actions
     
+    @IBAction func imageTapped(_ sender: UIButton) {
+        
+        
+    }
     @IBAction func saveClicked(_ sender: UIButton) {
         
         let appDelegate :AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -58,6 +68,12 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
             person.name = nameTextField.text
             person.age=age;
             person.job=jobTextField.text
+            
+            let addressManager = NSEntityDescription.entity(forEntityName: "Address", in: context)
+            person.address = Address (entity: addressManager!, insertInto: context)
+
+            person.address?.houseNumber=houseNoTextField.text
+            person.address?.city = cityTextField.text
             do {
                 try context.save()
             } catch let error {
@@ -67,10 +83,8 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
-            if ((nameTextField.text?.characters.count)!>0&&(ageTextField.text?.characters.count)!>0&&(jobTextField.text?.characters.count)!>0) {
+            if ((nameTextField.text?.characters.count)!>0 && (ageTextField.text?.characters.count)!>0 && (jobTextField.text?.characters.count)!>0) {
                 
-                
-                let context : NSManagedObjectContext = appDelegate.persistentContainer.viewContext
                 
                 let personManager = NSEntityDescription.entity(forEntityName: "Person", in: context)
                 
@@ -79,6 +93,14 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate {
                 person.name = nameTextField.text
                 person.age=age;
                 person.job=jobTextField.text
+                
+                let addressManager = NSEntityDescription.entity(forEntityName: "Address", in: context)
+                
+                 person.address = Address (entity: addressManager!, insertInto: context)
+                
+                
+               person.address?.houseNumber=houseNoTextField.text
+                person.address?.city = cityTextField.text
                 
                 do {
                     try context.save()
