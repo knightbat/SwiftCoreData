@@ -7,17 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F415533A1E4C7C1D00897045 /* XMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415532F1E4C7C1D00897045 /* XMButton.swift */; };
+		F415533B1E4C7C1D00897045 /* XMImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553301E4C7C1D00897045 /* XMImageView.swift */; };
+		F415533C1E4C7C1D00897045 /* XMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553311E4C7C1D00897045 /* XMLabel.swift */; };
+		F415533D1E4C7C1D00897045 /* XMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553321E4C7C1D00897045 /* XMTextField.swift */; };
+		F415533E1E4C7C1D00897045 /* XMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553331E4C7C1D00897045 /* XMTextView.swift */; };
+		F415533F1E4C7C1D00897045 /* XMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553341E4C7C1D00897045 /* XMView.swift */; };
+		F41553401E4C7C1D00897045 /* DetailsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553361E4C7C1D00897045 /* DetailsAddViewController.swift */; };
+		F41553411E4C7C1D00897045 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553371E4C7C1D00897045 /* ListViewController.swift */; };
+		F41553421E4C7C1D00897045 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553381E4C7C1D00897045 /* PersonTableViewCell.swift */; };
+		F41553431E4C7C1D00897045 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41553391E4C7C1D00897045 /* ViewController.swift */; };
 		F4C7B13C1E388F090001432B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B13B1E388F090001432B /* AppDelegate.swift */; };
 		F4C7B1411E388F090001432B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C7B13F1E388F090001432B /* Main.storyboard */; };
 		F4C7B1441E388F090001432B /* TestCoreSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B1421E388F090001432B /* TestCoreSwift.xcdatamodeld */; };
 		F4C7B1461E388F090001432B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C7B1451E388F090001432B /* Assets.xcassets */; };
 		F4C7B1491E388F090001432B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C7B1471E388F090001432B /* LaunchScreen.storyboard */; };
-		F4C7B1551E38A3FD0001432B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B1541E38A3FD0001432B /* ListViewController.swift */; };
-		F4C7B1571E38A4940001432B /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B1561E38A4940001432B /* PersonTableViewCell.swift */; };
-		F4C7B1591E38A7C70001432B /* DetailsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C7B1581E38A7C70001432B /* DetailsAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F415532F1E4C7C1D00897045 /* XMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMButton.swift; sourceTree = "<group>"; };
+		F41553301E4C7C1D00897045 /* XMImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMImageView.swift; sourceTree = "<group>"; };
+		F41553311E4C7C1D00897045 /* XMLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLabel.swift; sourceTree = "<group>"; };
+		F41553321E4C7C1D00897045 /* XMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTextField.swift; sourceTree = "<group>"; };
+		F41553331E4C7C1D00897045 /* XMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMTextView.swift; sourceTree = "<group>"; };
+		F41553341E4C7C1D00897045 /* XMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMView.swift; sourceTree = "<group>"; };
+		F41553361E4C7C1D00897045 /* DetailsAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsAddViewController.swift; sourceTree = "<group>"; };
+		F41553371E4C7C1D00897045 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F41553381E4C7C1D00897045 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		F41553391E4C7C1D00897045 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4C7B1381E388F090001432B /* TestCoreSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestCoreSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C7B13B1E388F090001432B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C7B1401E388F090001432B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -25,9 +42,6 @@
 		F4C7B1451E388F090001432B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C7B1481E388F090001432B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4C7B14A1E388F090001432B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4C7B1541E38A3FD0001432B /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		F4C7B1561E38A4940001432B /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
-		F4C7B1581E38A7C70001432B /* DetailsAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +55,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F415532E1E4C7C1D00897045 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F415532F1E4C7C1D00897045 /* XMButton.swift */,
+				F41553301E4C7C1D00897045 /* XMImageView.swift */,
+				F41553311E4C7C1D00897045 /* XMLabel.swift */,
+				F41553321E4C7C1D00897045 /* XMTextField.swift */,
+				F41553331E4C7C1D00897045 /* XMTextView.swift */,
+				F41553341E4C7C1D00897045 /* XMView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F41553351E4C7C1D00897045 /* Source Code */ = {
+			isa = PBXGroup;
+			children = (
+				F41553361E4C7C1D00897045 /* DetailsAddViewController.swift */,
+				F41553371E4C7C1D00897045 /* ListViewController.swift */,
+				F41553381E4C7C1D00897045 /* PersonTableViewCell.swift */,
+				F41553391E4C7C1D00897045 /* ViewController.swift */,
+			);
+			path = "Source Code";
+			sourceTree = "<group>";
+		};
 		F4C7B12F1E388F090001432B = {
 			isa = PBXGroup;
 			children = (
@@ -61,14 +99,13 @@
 			isa = PBXGroup;
 			children = (
 				F4C7B13B1E388F090001432B /* AppDelegate.swift */,
-				F4C7B13F1E388F090001432B /* Main.storyboard */,
-				F4C7B1451E388F090001432B /* Assets.xcassets */,
 				F4C7B1471E388F090001432B /* LaunchScreen.storyboard */,
+				F4C7B13F1E388F090001432B /* Main.storyboard */,
+				F415532E1E4C7C1D00897045 /* Extensions */,
+				F41553351E4C7C1D00897045 /* Source Code */,
+				F4C7B1451E388F090001432B /* Assets.xcassets */,
 				F4C7B14A1E388F090001432B /* Info.plist */,
 				F4C7B1421E388F090001432B /* TestCoreSwift.xcdatamodeld */,
-				F4C7B1541E38A3FD0001432B /* ListViewController.swift */,
-				F4C7B1561E38A4940001432B /* PersonTableViewCell.swift */,
-				F4C7B1581E38A7C70001432B /* DetailsAddViewController.swift */,
 			);
 			path = TestCoreSwift;
 			sourceTree = "<group>";
@@ -146,11 +183,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F415533D1E4C7C1D00897045 /* XMTextField.swift in Sources */,
+				F415533A1E4C7C1D00897045 /* XMButton.swift in Sources */,
+				F415533C1E4C7C1D00897045 /* XMLabel.swift in Sources */,
 				F4C7B1441E388F090001432B /* TestCoreSwift.xcdatamodeld in Sources */,
-				F4C7B1551E38A3FD0001432B /* ListViewController.swift in Sources */,
-				F4C7B1571E38A4940001432B /* PersonTableViewCell.swift in Sources */,
+				F41553421E4C7C1D00897045 /* PersonTableViewCell.swift in Sources */,
+				F415533E1E4C7C1D00897045 /* XMTextView.swift in Sources */,
+				F41553431E4C7C1D00897045 /* ViewController.swift in Sources */,
+				F41553401E4C7C1D00897045 /* DetailsAddViewController.swift in Sources */,
 				F4C7B13C1E388F090001432B /* AppDelegate.swift in Sources */,
-				F4C7B1591E38A7C70001432B /* DetailsAddViewController.swift in Sources */,
+				F415533B1E4C7C1D00897045 /* XMImageView.swift in Sources */,
+				F41553411E4C7C1D00897045 /* ListViewController.swift in Sources */,
+				F415533F1E4C7C1D00897045 /* XMView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +319,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5DM37TEFRF;
 				INFOPLIST_FILE = TestCoreSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Xminds.TestCoreSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -288,6 +333,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5DM37TEFRF;
 				INFOPLIST_FILE = TestCoreSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Xminds.TestCoreSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

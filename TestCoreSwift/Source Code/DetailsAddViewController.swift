@@ -114,6 +114,18 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate, UIActionS
             
         } else {
             
+//            NSData *imgData1 = UIImagePNGRepresentation(self.user.image);
+//            NSData *imgData2 = UIImagePNGRepresentation([UIImage imageNamed:@"add_img_grn"]);
+//            
+//            BOOL isCompare =  [imgData1 isEqual:imgData2];
+//            if(isCompare) {
+//            }
+            
+            let imgData1 = UIImagePNGRepresentation(userIamgeView.image!)
+            let imgData2 = UIImagePNGRepresentation(UIImage(named: "placeholder.png")!)
+            
+            let isCompare = imgData1
+            
             if ((nameTextField.text?.characters.count)!>0 && (ageTextField.text?.characters.count)!>0 && (jobTextField.text?.characters.count)!>0) {
                 
                 

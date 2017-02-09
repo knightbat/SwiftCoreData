@@ -54,9 +54,6 @@ class ListViewController: UIViewController ,UITableViewDelegate , UITableViewDat
         cell.ageLabel.text = String(format: "%d", (person.age?.intValue)!)
         cell.jobLabel.text = person.job
         cell.userImageView.image = UIImage(data:person.image as! Data,scale:1.0)
-        cell.userImageView.layer.cornerRadius = cell.userImageView.frame.size.width/2
-        cell.userImageView.layer.borderColor = UIColor.black.cgColor
-        cell.userImageView.layer.borderWidth=1
         cell.addressLabel.text = "House No: \(person.address?.houseNumber ?? ""), \(person.address?.city ?? "")"
         
         return cell;
