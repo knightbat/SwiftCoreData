@@ -58,7 +58,7 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate, UIActionS
     
     @IBAction func imageTapped(_ sender: UIButton) {
         
-        let actionSheet = UIAlertController (title: "Choose Photo", message: "Choose An Option", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let actionSheet = UIAlertController (title: "Choose Photo", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.default, handler: { action in
             
@@ -121,10 +121,14 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate, UIActionS
 //            if(isCompare) {
 //            }
             
-            let imgData1 = UIImagePNGRepresentation(userIamgeView.image!)
-            let imgData2 = UIImagePNGRepresentation(UIImage(named: "placeholder.png")!)
+            let imgData1 : NSData = UIImagePNGRepresentation(userIamgeView.image!)! as NSData
+            let imgData2 : NSData = UIImagePNGRepresentation(UIImage(named: "placeholder.png")!)! as NSData
             
-            let isCompare = imgData1
+            let isCompare : Bool = imgData1.isEqual(to: imgData2 as Data)
+            
+            if isCompare {
+                
+            }
             
             if ((nameTextField.text?.characters.count)!>0 && (ageTextField.text?.characters.count)!>0 && (jobTextField.text?.characters.count)!>0) {
                 
@@ -206,7 +210,7 @@ class DetailsAddViewController: UIViewController, UITextFieldDelegate, UIActionS
     // MARK: - UItextField Delegates
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        scrlContainer.contentOffset.y=textField.frame.origin.y-20
+        scrlContainer.contentOffset.y=textField.frame.origin.y-50
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         scrlContainer.contentOffset.y=0
